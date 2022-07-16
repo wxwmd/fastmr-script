@@ -10,7 +10,7 @@ import socket
 import time
 from typing import List
 
-from ncluster import ncluster_globals
+import ncluster_globals
 import backend
 import util
 
