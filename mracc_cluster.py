@@ -559,6 +559,30 @@ def run_tpcds(master, tpcds_scaleFactor, SPARK_EXECUTOR_INSTANCES, SPARK_EXECUTO
     # 这里是在生成spark-config.conf
     # 我的conf文件最终应该就是要替换这个文件
     # {FASTMR_PATH}/target/{CLUSTER_NAME}/tpcds/spark-config.conf
+    for line in fileinput.input(f"{FASTMR_PATH}/target/{CLUSTER_NAME}/tpcds/spark-config.conf", inplace=True):
+        if line.__contains__('spark.driver.cores'):
+            print(f"spark.driver.cores {2}")
+            continue
+        if line.__contains__('spark.driver.memory'):
+            print(f"spark.driver.memory {4}g")
+            continue
+        if line.__contains__('spark.executor.instances'):
+            print(f"spark.executor.instances {5}")
+            continue
+        if line.__contains__('spark.executor.cores'):
+            print(f"spark.executor.cores {2}")
+            continue
+        if line.__contains__('spark.executor.memory '):
+            print(f"spark.executor.memory {3}g")
+            continue
+        if line.__contains__('spark.executor.memoryOverhead'):
+            print(f"spark.executor.memoryOverhead {1}g")
+            continue
+        if line.__contains__('spark.default.parallelism'):
+            print(f"spark.default.parallelism {50}")
+            continue
+        else:
+            print(line, end='')
 
     # set the size of tpcds
     tpcds_datagen_command = f"spark-submit --properties-file spark-config.conf --class " \
