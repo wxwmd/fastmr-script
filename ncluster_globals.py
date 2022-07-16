@@ -8,8 +8,8 @@ run_object refers to Run object corresponding to that name
 import os
 import sys
 from typing import Dict, Any, List
-from . import util
-from . import backend
+import util
+import backend
 
 LOGDIR_ROOT = None
 task_launched = False  # keep track whether anything has been launched

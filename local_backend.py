@@ -11,8 +11,8 @@ import time
 from typing import List
 
 from ncluster import ncluster_globals
-from . import backend
-from . import util
+import backend
+import util
 
 TASKDIR_ROOT = '/tmp/ncluster/task'
 SCRATCH_ROOT = '/tmp/ncluster/scratch'

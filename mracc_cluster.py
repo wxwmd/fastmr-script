@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 
-import ncluster
-import os
-import time
-from configparser import ConfigParser
-import xml.etree.ElementTree as ET
-import json
-import requests
-import math
 import fileinput
+import math
+import os
 import shutil
+import time
+import xml.etree.ElementTree as ET
+from configparser import ConfigParser
+
+import ncluster
 
 
 def def_conf(conf_path):

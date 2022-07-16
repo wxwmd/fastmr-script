@@ -8,9 +8,9 @@ import sys
 import time
 import argparse
 
-from ncluster import aliyun_util as u
-from ncluster import util
-from ncluster import ncluster_globals
+import aliyun_util as u
+import util
+import ncluster_globals
 
 
 DRYRUN = False

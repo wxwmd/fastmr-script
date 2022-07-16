@@ -1,11 +1,11 @@
-from . import aliyun_backend
-from . import local_backend
-from . import fastmr_backend
-from . import backend
-from . import aliyun_util as u
+import aliyun_backend
+import local_backend
+import fastmr_backend
+import backend
+import aliyun_util as u
 import collections
 
-from . import ncluster_globals
+import ncluster_globals
 
 _backend: type(backend) = backend
 

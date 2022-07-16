@@ -12,8 +12,8 @@ from operator import itemgetter
 
 from typing import Iterable, List
 
-from . import util
-from . import aliyun
+import util
+import aliyun
 
 EMPTY_NAME = "noname"  # name to use when name attribute is missing on Aliyun
 RETRY_INTERVAL_SEC = 1  # how long to wait before retries

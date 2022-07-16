@@ -9,7 +9,7 @@ import threading
 import time
 from typing import List, Tuple, Any
 
-from . import util
+import util
 
 # local_backend.py
 

@@ -1,22 +1,20 @@
-import math
-import shlex
-import time
-import os
-import stat
 import glob
+import math
+import os
+import shlex
+import stat
 import threading
-
-from . import backend
-from . import ncluster_globals
-from . import aliyun_util as u
-from typing import Tuple
-from . import util
-from . import aliyun
-from . import aliyun_backend
-from . import constant as c
-from typing import List
-
+import time
 import xml.etree.ElementTree as ET
+from typing import List
+from typing import Tuple
+
+import aliyun_backend
+import aliyun_util as u
+import backend
+import constant as c
+import ncluster_globals
+import util
 
 # default value of logdir root for this backend (can override with set_logdir_root)
 DEFAULT_LOGDIR_ROOT = '/ncluster/runs'

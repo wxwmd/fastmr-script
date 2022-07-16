@@ -7,8 +7,8 @@ import os
 import argparse
 import time
 
-from ncluster import aliyun_util as u
-from ncluster import util
+import aliyun_util as u
+import util
 
 NAS_NAME = u.get_prefix()
 VPC_NAME = u.get_prefix()

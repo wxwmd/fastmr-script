@@ -5,7 +5,6 @@ Not thread-safe
 """
 import glob
 import os
-import pprint
 import shlex
 import signal
 import stat
@@ -15,13 +14,12 @@ from typing import Tuple, List, Optional
 
 import paramiko
 
-from ncluster import ncluster_globals
-from . import aliyun
-from . import aliyun_create_resources as create_lib
-from . import aliyun_util as u
-from . import backend
-from . import util
-from .aliyun import Instance
+import aliyun
+import aliyun_create_resources as create_lib
+import aliyun_util as u
+import backend
+import ncluster_globals
+import util
 
 TMPDIR = '/tmp/ncluster-{}'.format(util.get_username())  # location for temp files on launching machine
 NCLUSTER_DEFAULT_REGION = 'cn-huhehaote'  # used as last resort if no other method set a region
