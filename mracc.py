@@ -401,12 +401,14 @@ def conf_hadoop(job):
         job.run(f"dos2unix /opt/hadoop-{hadoop_version}/etc/hadoop/*")
 
 
+# 将生成的spark-defaults.conf上传到opt目录下
 def conf_spark(job):
     config = ConfigParser()
     config.read(CONF_PATH, encoding='UTF-8')
 
     spark_version = config['spark']['version']
 
+    # 将这里的spark_conf改成我自己的文件
     spark_conf = FASTMR_PATH + "/target/" + CLUSTER_NAME + "/config/spark/spark-defaults.conf"
     job.upload(spark_conf, f"/opt/spark-{spark_version}/conf")
 
@@ -603,23 +605,21 @@ def run_tpcds(master, tpcds_scaleFactor, SPARK_EXECUTOR_INSTANCES, SPARK_EXECUTO
         file.write("cd /opt/TPC/TPC-DS \n")
         file.write(tpcds_runallsql_command)
     master.upload(f"{FASTMR_PATH}/target/{CLUSTER_NAME}/tpcds", "/opt/TPC/TPC-DS/")
-    print("TPC-DS is running")
-    tpcds_gen_start_time = time.time()
-    master.run("/opt/TPC/TPC-DS/datagen_custom.sh")
-    tpcds_gen_time = time.time() - tpcds_gen_start_time
-    tpcds_sql_start_time = time.time()
-    master.run("/opt/TPC/TPC-DS/runallquery_custom.sh")
-
-    tpcds_sql_time = time.time() - tpcds_sql_start_time
-
-    # eclapse_time = time.time() - tpcds_start_time
-    # print(f'tpcds deploy time is: {eclapse_time} s.')
-
-    infofile = FASTMR_PATH + "/target/" + CLUSTER_NAME + "/cluster.info"
-    with open(infofile, 'a+') as f:
-        f.write("-------------TPC-DS---------------\n")
-        f.write(f"TPC-DS-Gen run time : {tpcds_gen_time} s\n")
-        f.write(f"TPC-DS-SQL run time : {tpcds_sql_time} s\n")
+    print("完成所有配置")
+    # print("TPC-DS is running")
+    # tpcds_gen_start_time = time.time()
+    # master.run("/opt/TPC/TPC-DS/datagen_custom.sh")
+    # tpcds_gen_time = time.time() - tpcds_gen_start_time
+    # tpcds_sql_start_time = time.time()
+    # master.run("/opt/TPC/TPC-DS/runallquery_custom.sh")
+    #
+    # tpcds_sql_time = time.time() - tpcds_sql_start_time
+    #
+    # infofile = FASTMR_PATH + "/target/" + CLUSTER_NAME + "/cluster.info"
+    # with open(infofile, 'a+') as f:
+    #     f.write("-------------TPC-DS---------------\n")
+    #     f.write(f"TPC-DS-Gen run time : {tpcds_gen_time} s\n")
+    #     f.write(f"TPC-DS-SQL run time : {tpcds_sql_time} s\n")
 
 
 def show_result():
